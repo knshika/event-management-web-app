@@ -14,6 +14,10 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT) : 8000
 app.use(express.json())
 app.use(cors())
 
+app.get("/", (req, res) => {
+  res.send("Hello I'm up!")
+})
+
 //route middleware
 app.use("/api/user", authRoute)
 
