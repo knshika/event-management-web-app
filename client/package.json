@@ -14,7 +14,9 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^6.0.2",
+    "twind": "^0.16.16"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",
