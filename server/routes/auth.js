@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
 
   try {
     await user.save()
-    res.send({})
+    res.send({ user })
   } catch (err) {
     res.status(400).send(err)
   }

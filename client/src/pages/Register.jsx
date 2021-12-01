@@ -65,7 +65,7 @@ const Register = () => {
       <form className="flex flex-col " onSubmit={registerUser}>
         {registrationInputs.map((item, index) => {
           const value =
-            item.type === "date"
+            formData[item.name] && item.type === "date"
               ? new Date(formData[item.name]).toISOString().split("T")[0]
               : formData[item.name]
 
