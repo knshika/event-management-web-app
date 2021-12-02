@@ -15,7 +15,18 @@ router.post("/", async (req, res) => {
     const club = new Club({ name, admins })
 
     await club.save()
-    res.send({ club })
+    res.send(club)
+  } catch (err) {
+    console.log(err)
+    res.status(400).send(err)
+  }
+})
+
+router.get("/:id", async (req, res) => {
+  try {
+    const club = await Club.findOne({ _id: req.params.id }).populate("admins")
+
+    res.send(club)
   } catch (err) {
     console.log(err)
     res.status(400).send(err)
