@@ -1,8 +1,9 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 import { Forms } from "../components/Forms"
-import { API_URL } from "../const"
+import fetcher from "../utils/fetcher"
 import { login } from "../state/slices/loginSlice"
+import { useNavigate } from "react-router-dom"
 
 const loginInputs = [
   { name: "email", type: "email", label: "Email Id" },
@@ -10,14 +11,12 @@ const loginInputs = [
 ]
 
 const Login = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   async function loginUser(formData) {
-    const response = await fetch(`${API_URL}/api/user/login`, {
+    const response = await fetcher("api/user/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(formData),
     })
     console.log(response)
@@ -29,6 +28,7 @@ const Login = () => {
       localStorage.setItem("token", token)
       alert("Successfully logged in")
       dispatch(login({ user, token }))
+      // navigate("/club")
     } else {
       alert("Something is wrong!! Check your email or password")
     }
