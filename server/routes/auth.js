@@ -29,10 +29,15 @@ router.post("/login", async (req, res) => {
 
   //checking if password is correct using bcrypt
   const validPass = await bcrypt.compare(req.body.password, user.password)
-  if (!validPass) return res.status(400).send("Invalid password")
+  if (!validPass) return res.status(400).send({ error: "Invalid password" })
 
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
   res.send({ user, token: `Bearer ${token}` })
+})
+
+router.get("/verifyToken", async (req, res) => {
+  if (req.user) res.send({ user: req.user })
+  else res.status(400).send({ error: "Could not verify token" })
 })
 
 module.exports = router
