@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useState } from "react"
+import React from "react"
 import { useNavigate } from "react-router-dom"
 import { Forms } from "../components/Forms"
 import { API_URL } from "../const"
@@ -43,7 +43,7 @@ const Register = () => {
   }
 
   return (
-    <div className="flex flex-col align-center items-center m-2">
+    <div className="flex flex-col justify-center items-center m-2">
       <h1 className="text-xl uppercase">Register</h1>
 
       <Forms inputs={registrationInputs} onSubmit={registerUser} />
