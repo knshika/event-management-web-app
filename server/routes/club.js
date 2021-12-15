@@ -1,8 +1,9 @@
 const router = require("express").Router()
 const Club = require("../model/Club")
 const User = require("../model/User")
+const checkSuperAdmin = require("../helper/checkSuperAdmin")
 
-router.post("/", async (req, res) => {
+router.post("/", checkSuperAdmin, async (req, res) => {
   try {
     const { name, admin_emails } = req.body
     const admins = []
@@ -13,7 +14,6 @@ router.post("/", async (req, res) => {
     }
 
     const club = new Club({ name, admins })
-
     await club.save()
     res.send(club)
   } catch (err) {
