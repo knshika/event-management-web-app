@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.0",
     "eslint-config-airbnb": "^19.0.1",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -15,7 +16,9 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
+    "redux": "^4.1.2",
     "twind": "^0.16.16"
   },
   "devDependencies": {
