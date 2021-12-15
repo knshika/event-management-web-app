@@ -48,6 +48,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       length: 10,
     },
+    superAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 )
