@@ -39,8 +39,9 @@ const CreateClub = () => {
 
     console.log(data)
   }
+
   return (
-    <div className="flex flex-col align-center items-center m-2">
+    <div className="flex flex-col justify-center items-center m-2">
       <h1 className="text-xl uppercase">Club Register </h1>
       <Forms inputs={createClubInputs} onSubmit={registerClub} />
     </div>
