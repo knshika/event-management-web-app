@@ -1,8 +1,10 @@
+/* eslint-disable no-empty */
 const express = require("express")
 const app = express()
 const cors = require("cors")
 const dotenv = require("dotenv")
 const mongoose = require("mongoose")
+const verifyToken = require("./helper/verifyToken")
 
 const authRoute = require("./routes/auth")
 const clubRoute = require("./routes/club")
@@ -22,6 +24,18 @@ app.get("/", (req, res) => {
 })
 
 //route middleware
+//this middleware checks which user is accessing the routes using token and storing user value in request
+app.use(async (req, res, next) => {
+  try {
+    const auth = req.headers["authorization"]
+    if (auth) {
+      const token = auth.replace("Bearer ", "")
+      const user = await verifyToken(token)
+      req.user = user
+    }
+  } catch (err) {}
+  next()
+})
 app.use("/api/user", authRoute)
 app.use("/api/club", clubRoute)
 
