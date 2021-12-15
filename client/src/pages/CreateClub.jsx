@@ -1,6 +1,6 @@
 import React from "react"
 import { Forms } from "../components/Forms"
-import { API_URL } from "../const"
+import fetcher from "../utils/fetcher"
 
 const createClubInputs = [
   { name: "name", type: "text", label: "Club name" },
@@ -13,22 +13,18 @@ const createClubInputs = [
 
 const CreateClub = () => {
   async function registerClub(formData) {
-    const adminEmails = fromData.adminEmails
+    const admin_emails = formData.adminEmails
       .split(",")
       .map((email) => email.trim())
       .filter((email) => email)
 
-    const response = await fetch(`${API_URL}/api/club/`, {
+    const response = await fetcher("api/club/", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({
-        clubName: formData.name,
-        adminEmails,
+        name: formData.name,
+        admin_emails, // fixed
       }),
     })
-    console.log(response)
 
     const data = await response.json()
 
