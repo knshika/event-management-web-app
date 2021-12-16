@@ -19,7 +19,10 @@ const Navbar = () => {
 
       <div className="text-white font-bold text-sm ml-auto">
         {loginState.user ? (
-          <NavLink link="/profile">{loginState.user.name}</NavLink>
+          <>
+            <NavLink link="/profile">{loginState.user.name}</NavLink>
+            <NavLink link="/login">Logout</NavLink>
+          </>
         ) : (
           <>
             <NavLink link="/login"> Login </NavLink>

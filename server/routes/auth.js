@@ -40,4 +40,15 @@ router.get("/verifyToken", async (req, res) => {
   else res.status(400).send({ error: "Could not verify token" })
 })
 
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id })
+
+    res.send(user)
+  } catch (err) {
+    console.log(err)
+    res.status(400).send(err)
+  }
+})
+
 module.exports = router
