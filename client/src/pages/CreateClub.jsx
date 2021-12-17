@@ -1,7 +1,7 @@
 import React from "react"
 import { Forms } from "../components/Forms"
 import fetcher from "../utils/fetcher"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const createClubInputs = [
   { name: "name", type: "text", label: "Club name" },
@@ -14,6 +14,7 @@ const createClubInputs = [
 
 const CreateClub = () => {
   const navigate = useNavigate()
+
   async function registerClub(formData) {
     const admin_emails = formData.adminEmails
       .split(",")
@@ -29,10 +30,9 @@ const CreateClub = () => {
     })
 
     const data = await response.json()
-
     if (response.status === 200) {
       alert("Successfully registered club")
-      navigate("/club-details")
+      navigate(`/club/${data._id}`)
     }
 
     console.log(data)
