@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react"
 import fetcher from "../utils/fetcher"
 import { useNavigate, useParams } from "react-router-dom"
+import { useLoginState } from "../state/slices/loginSlice"
 
 const CreateClub = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [clubDetails, setClubDetails] = useState(null)
   const [error, setError] = useState(false)
+
+  const clubAdmins = clubDetails ? clubDetails.admins : []
+  const { user } = useLoginState()
+
+  const isClubAdmin = clubAdmins.includes(user?._id) || user?.superAdmin
 
   const handleUpdate = () => {
     navigate(`/club/${id}/update`)
@@ -53,14 +59,24 @@ const CreateClub = () => {
           </div>
         ))}
       </div>
-      <div>
-        <button className="border-1 bg-blue-200 m-2" onClick={handleUpdate}>
-          Update Club
-        </button>
-        <button className="border-1 bg-blue-200 m-2" onClick={handleDelete}>
-          Delete Club
-        </button>
-      </div>
+      {isClubAdmin ? (
+        <div>
+          <button
+            className="m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
+            onClick={handleUpdate}
+          >
+            Update Club
+          </button>
+          <button
+            className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
+            onClick={handleDelete}
+          >
+            Delete Club
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   ) : (
     <div></div>
