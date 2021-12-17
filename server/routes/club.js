@@ -34,6 +34,16 @@ router.get("/:id", async (req, res) => {
   }
 })
 
+router.delete("/:id", async (req, res) => {
+  try {
+    await Club.deleteOne({ _id: req.params.id })
+    res.send({ success: true })
+  } catch (err) {
+    console.log(err)
+    res.status(400).send(err)
+  }
+})
+
 router.post("/:id", async (req, res) => {
   try {
     const club = await Club.findOne({ _id: req.params.id })

@@ -6,21 +6,34 @@ const CreateClub = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [clubDetails, setClubDetails] = useState(null)
+  const [error, setError] = useState(false)
 
   const handleUpdate = () => {
     navigate(`/club/${id}/update`)
+  }
+  const handleDelete = async () => {
+    const response = await fetcher(`api/club/${id}`, {
+      method: "DELETE",
+    })
+
+    if (response.status === 200) {
+      alert("Successfully deleted")
+    } else {
+      setError(true)
+    }
+    navigate("/club")
   }
 
   const getClubDetails = async () => {
     const response = await fetcher(`api/club/${id}`, {
       method: "GET",
     })
-    const data = await response.json()
-    console.log(data)
-    if (data) {
+
+    if (response.status === 200) {
+      const data = await response.json()
       setClubDetails(data)
     } else {
-      response.err({ error: data.error })
+      setError(true)
     }
   }
   useEffect(() => {
@@ -40,9 +53,14 @@ const CreateClub = () => {
           </div>
         ))}
       </div>
-      <button className="border-1 bg-blue-200 m-2" onClick={handleUpdate}>
-        Update Club
-      </button>
+      <div>
+        <button className="border-1 bg-blue-200 m-2" onClick={handleUpdate}>
+          Update Club
+        </button>
+        <button className="border-1 bg-blue-200 m-2" onClick={handleDelete}>
+          Delete Club
+        </button>
+      </div>
     </div>
   ) : (
     <div></div>
