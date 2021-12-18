@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { Forms } from "../components/Forms"
 import fetcher from "../utils/fetcher"
 import { login } from "../state/slices/loginSlice"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const loginInputs = [
   { name: "email", type: "email", label: "Email Id" },
@@ -11,7 +11,6 @@ const loginInputs = [
 ]
 
 const Login = () => {
-  const { id } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -29,7 +28,7 @@ const Login = () => {
       localStorage.setItem("token", token)
       alert("Successfully logged in")
       dispatch(login({ user, token }))
-      navigate("/user/${id}")
+      navigate(`/user/${user._id}`)
     } else {
       alert("Something is wrong!! Check your email or password")
     }
