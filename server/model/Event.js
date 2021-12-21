@@ -9,32 +9,37 @@ const eventSchema = new mongoose.Schema(
       max: 255,
       min: 4,
     },
+    club: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Club",
+      required: true,
+    },
     description: {
       type: String,
       required: true,
       max: 255,
       min: 6,
     },
-    eventDetails: {
-      eventType: {
+    details: {
+      type: {
         //technical, cultural , social
         type: String,
         max: 1024,
         min: 8,
       },
-      isFreeEvent: {
-        type: Boolean,
+      registrationFee: {
+        type: Number,
         default: true,
       },
       // judges: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-      participationType: {
-        //solo ,groupOf
-        type: String,
-        max: 1024,
-        min: 8,
-      },
+      // participationType: {
+      //   //solo ,groupOf
+      //   type: String,
+      //   max: 1024,
+      //   min: 8,
+      // },
     },
-    eventDates: {
+    dates: {
       registrationStart: {
         type: Date,
         required: true,
