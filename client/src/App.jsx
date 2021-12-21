@@ -7,6 +7,9 @@ import Navbar from "./components/Navbar"
 import UpdateClub from "./pages/UpdateClub"
 import ClubPage from "./pages/ClubPage"
 import Dashboard from "./pages/Dashboard"
+import EventPage from "./pages/EventPage"
+import CreateEvent from "./pages/CreateEvent"
+import UpdateEvent from "./pages/UpdateEvent"
 import { useDispatch } from "react-redux"
 import fetcher from "./utils/fetcher"
 import { login, logout } from "./state"
@@ -37,12 +40,13 @@ const App = () => {
       <Routes>
         <Route path="register" exact element={<Register />} />
         <Route path="login" exact element={<Login />} />
+        <Route path="user/:id" exact element={<Dashboard />} />
         <Route path="club" exact element={<CreateClub />} />
         <Route path="club/:id/update" exact element={<UpdateClub />} />
         <Route path="club/:id" exact element={<ClubPage />} />
-        <Route path="user/:id" exact element={<Dashboard />} />
-
-        {/* <Route path="dashboard" exact element={<Dashboard />} /> */}
+        <Route path="club/:id/event" exact element={<CreateEvent />} />
+        <Route path="event/:eventId" exact element={<EventPage />} />
+        <Route path="event/:eventId/update" exact element={<UpdateEvent />} />
       </Routes>
     </BrowserRouter>
   )

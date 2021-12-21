@@ -3,11 +3,10 @@ import fetcher from "../utils/fetcher"
 import { useNavigate, useParams } from "react-router-dom"
 import { useLoginState } from "../state/slices/loginSlice"
 
-const CreateClub = () => {
+const ClubPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [clubDetails, setClubDetails] = useState(null)
-  const [error, setError] = useState(false)
 
   const clubAdmins = clubDetails ? clubDetails.admins : []
   const { user } = useLoginState()
@@ -17,6 +16,11 @@ const CreateClub = () => {
   const handleUpdate = () => {
     navigate(`/club/${id}/update`)
   }
+
+  const handleCreateEvent = () => {
+    navigate(`/club/${id}/event`)
+  }
+
   const handleDelete = async () => {
     const response = await fetcher(`api/club/${id}`, {
       method: "DELETE",
@@ -24,8 +28,6 @@ const CreateClub = () => {
 
     if (response.status === 200) {
       alert("Successfully deleted")
-    } else {
-      setError(true)
     }
     navigate("/club")
   }
@@ -38,8 +40,6 @@ const CreateClub = () => {
     if (response.status === 200) {
       const data = await response.json()
       setClubDetails(data)
-    } else {
-      setError(true)
     }
   }
   useEffect(() => {
@@ -52,9 +52,22 @@ const CreateClub = () => {
         {clubDetails.name}
       </h1>
       <div className="flex flex-col m-2">
+        {console.log("in react", clubDetails.events, clubDetails.admins)}
         <h2 className=" text-xl uppercase text-xl m-1">Admins</h2>
         {clubDetails.admins.map((item, index) => (
-          <div className="p-1 " key={index}>
+          <div className="p-1" key={index}>
+            - {item.name}
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col m-2">
+        <h2 className=" text-xl uppercase text-xl m-1">Events</h2>
+        {clubDetails.events.map((item, index) => (
+          <div
+            className="p-1 cursor-pointer"
+            key={index}
+            onClick={() => navigate(`/club/${id}/event/${item._id}`)}
+          >
             - {item.name}
           </div>
         ))}
@@ -66,6 +79,12 @@ const CreateClub = () => {
             onClick={handleUpdate}
           >
             Update Club
+          </button>
+          <button
+            className="m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
+            onClick={handleCreateEvent}
+          >
+            Add Event
           </button>
           <button
             className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
@@ -83,4 +102,4 @@ const CreateClub = () => {
   )
 }
 
-export default CreateClub
+export default ClubPage
