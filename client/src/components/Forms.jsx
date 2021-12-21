@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable indent */
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const Forms = ({ inputs, onSubmit }) => {
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState(() => {
     const defaultValues = {}
     inputs.forEach((input) => {
@@ -59,6 +62,13 @@ export const Forms = ({ inputs, onSubmit }) => {
         className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
       >
         Submit
+      </button>
+      <button
+        type="submit"
+        className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
+        onClick={() => navigate(-1)} // example mai konsa hook use kia tha vo? useHistory ni,  KYA ERROR AYA? KI VO HAI HI NI REACT DOM MAI
+      >
+        Cancel
       </button>
     </form>
   )

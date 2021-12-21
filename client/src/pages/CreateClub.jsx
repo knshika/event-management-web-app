@@ -1,7 +1,7 @@
 import React from "react"
 import { Forms } from "../components/Forms"
 import fetcher from "../utils/fetcher"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const createClubInputs = [
   { name: "name", type: "text", label: "Club name" },
