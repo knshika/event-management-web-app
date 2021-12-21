@@ -8,6 +8,7 @@ const verifyToken = require("./helper/verifyToken")
 
 const authRoute = require("./routes/auth")
 const clubRoute = require("./routes/club")
+const eventRoute = require("./routes/event")
 
 dotenv.config()
 
@@ -38,6 +39,7 @@ app.use(async (req, res, next) => {
 })
 app.use("/api/user", authRoute)
 app.use("/api/club", clubRoute)
+app.use("/api/event", eventRoute)
 
 const main = async () => {
   // Connect to db
