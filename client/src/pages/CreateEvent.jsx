@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Forms } from "../components/Forms"
 import fetcher from "../utils/fetcher"
+import PrizesInput from "../components/PrizesInput"
 import { useNavigate, useParams } from "react-router-dom"
 
 const createEventInputs = [
@@ -11,7 +12,7 @@ const createEventInputs = [
     label: "Description",
   },
   {
-    name: "eventType",
+    name: "type",
     type: "text",
     label: "Event Type",
   },
@@ -53,9 +54,10 @@ const createEventInputs = [
 const CreateEvent = () => {
   const navigate = useNavigate()
   const { id } = useParams()
+  const [prizes, setPrizes] = useState([])
 
   async function registerEvent(formData) {
-    const transformedData = transformFomData(formData)
+    const transformedData = transformFomData({ ...formData, prizes })
 
     const response = await fetcher("api/event/", {
       method: "POST",
@@ -73,7 +75,9 @@ const CreateEvent = () => {
   return (
     <div className="flex flex-col justify-center items-center m-2">
       <h1 className="text-xl uppercase">Event Register </h1>
-      <Forms inputs={createEventInputs} onSubmit={registerEvent} />
+      <Forms inputs={createEventInputs} onSubmit={registerEvent}>
+        <PrizesInput prizes={prizes} onChange={setPrizes} showWinner={false} />
+      </Forms>
     </div>
   )
 }
@@ -93,8 +97,8 @@ const transformFomData = ({
   registrationStart,
   result,
   type,
-  isFreeEvent,
-  participationType,
+  registrationFee,
+  // participationType,
   prizes,
   participants,
 }) => {
@@ -103,8 +107,8 @@ const transformFomData = ({
     description,
     details: {
       type,
-      isFreeEvent,
-      participationType,
+      registrationFee,
+      // participationType,
     },
     dates: {
       start,
