@@ -10,6 +10,7 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-react: ^7.27.1
   eslint-plugin-react-hooks: ^4.3.0
+  luxon: ^2.2.0
   prettier: 2.5.0
   react: ^17.0.0
   react-dom: ^17.0.0
@@ -27,6 +28,7 @@ dependencies:
   eslint-plugin-prettier: 4.0.0_eslint@8.3.0+prettier@2.5.0
   eslint-plugin-react: 7.27.1_eslint@8.3.0
   eslint-plugin-react-hooks: 4.3.0_eslint@8.3.0
+  luxon: 2.2.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-redux: 7.2.6_react-dom@17.0.2+react@17.0.2
@@ -1590,6 +1592,11 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /luxon/2.2.0:
+    resolution: {integrity: sha512-LwmknessH4jVIseCsizUgveIHwlLv/RQZWC2uDSMfGJs7w8faPUi2JFxfyfMcTPrpNbChTem3Uz6IKRtn+LcIA==}
+    engines: {node: '>=12'}
+    dev: false
 
   /minimatch/3.0.4:
     resolution: {integrity: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==}
