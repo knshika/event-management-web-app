@@ -29,15 +29,8 @@ const eventSchema = new mongoose.Schema(
       },
       registrationFee: {
         type: Number,
-        default: true,
+        default: 0,
       },
-      // judges: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-      // participationType: {
-      //   //solo ,groupOf
-      //   type: String,
-      //   max: 1024,
-      //   min: 8,
-      // },
     },
     dates: {
       registrationStart: {
@@ -59,7 +52,6 @@ const eventSchema = new mongoose.Schema(
     prizes: [
       {
         type: {
-          //1st 2nd, 3rd
           type: String,
           required: true,
           max: 255,
@@ -68,7 +60,6 @@ const eventSchema = new mongoose.Schema(
         winner: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "User",
-          required: false,
         },
         amount: {
           type: Number,
