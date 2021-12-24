@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const Forms = ({ inputs, onSubmit }) => {
+export const Forms = ({ inputs, onSubmit, children }) => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState(() => {
@@ -57,6 +57,8 @@ export const Forms = ({ inputs, onSubmit }) => {
         )
       })}
 
+      {children}
+
       <button
         type="submit"
         className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
@@ -66,7 +68,7 @@ export const Forms = ({ inputs, onSubmit }) => {
       <button
         type="submit"
         className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
-        onClick={() => navigate(-1)} // example mai konsa hook use kia tha vo? useHistory ni,  KYA ERROR AYA? KI VO HAI HI NI REACT DOM MAI
+        onClick={() => navigate(-1)}
       >
         Cancel
       </button>
