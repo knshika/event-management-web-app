@@ -23,14 +23,14 @@ const Dashboard = () => {
     getUserDetails()
   }, [])
 
-  return userDetails ? (
-    <div className="flex flex-col justify-center items-center bg-blue-100 m-2">
-      <h1 className="text-xl  text-2xl m-2 p-2 ">
-        Welcome {userDetails.name} !!
-      </h1>
-    </div>
-  ) : (
-    <div></div>
+  return (
+    userDetails && (
+      <div className="flex flex-col justify-center items-center bg-blue-100 m-2">
+        <h1 className="text-xl  text-2xl m-2 p-2 ">
+          Welcome {userDetails.name} !!
+        </h1>
+      </div>
+    )
   )
 }
 
