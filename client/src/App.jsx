@@ -9,6 +9,7 @@ import ClubPage from "./pages/ClubPage"
 import Dashboard from "./pages/Dashboard"
 import EventPage from "./pages/EventPage"
 import CreateEvent from "./pages/CreateEvent"
+import Participants from "./pages/Participants"
 import UpdateEvent from "./pages/UpdateEvent"
 import { useDispatch } from "react-redux"
 import fetcher from "./utils/fetcher"
@@ -47,6 +48,11 @@ const App = () => {
         <Route path="club/:id/event" exact element={<CreateEvent />} />
         <Route path="event/:eventId" exact element={<EventPage />} />
         <Route path="event/:eventId/update" exact element={<UpdateEvent />} />
+        <Route
+          path="event/:eventId/participants"
+          exact
+          element={<Participants />}
+        />
       </Routes>
     </BrowserRouter>
   )
