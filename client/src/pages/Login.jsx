@@ -19,16 +19,15 @@ const Login = () => {
       method: "POST",
       body: JSON.stringify(formData),
     })
-    console.log(response)
 
     if (response.status === 200) {
       const data = await response.json()
-      console.log(data)
+
       const { user, token } = data
       localStorage.setItem("token", token)
       alert("Successfully logged in")
       dispatch(login({ user, token }))
-      navigate(`/user/${user._id}`)
+      navigate(`/dashboard/${user._id}`)
     } else {
       alert("Something is wrong!! Check your email or password")
     }
