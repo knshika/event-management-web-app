@@ -111,10 +111,15 @@ router.post("/:id", async (req, res) => {
 router.post("/:id/register", async (req, res) => {
   try {
     const event = await Event.findOne({ _id: req.params.id })
-    if (!event.participants.includes(req.user._id))
+    const participant = await User.findOne({ _id: req.user._id })
+
+    if (!event.participants.includes(req.user._id)) {
+      participant.participatedEvents.push(event.id)
       event.participants.push(req.user._id)
+    }
 
     await event.save()
+    await participant.save()
     res.send(event)
   } catch (err) {
     console.log(err)
@@ -127,8 +132,13 @@ router.delete("/:id/participants", async (req, res) => {
   try {
     const event = await Event.findOne({ _id: req.params.id })
     const participantId = req.body.participant
+    const participant = await User.findOne({ _id: participantId })
+
     event.participants = event.participants.filter(
       (id) => id.toString() !== participantId
+    )
+    participant.participatedEvents = participant.participatedEvents.filter(
+      (id) => id.toString() !== event._id
     )
     await event.save()
     res.send(event)

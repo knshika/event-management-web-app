@@ -52,6 +52,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    participatedEvents: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Event" },
+    ],
+    adminOfClub: [{ type: mongoose.Schema.Types.ObjectId, ref: "Club" }],
   },
   { timestamps: true }
 )
