@@ -12,7 +12,6 @@ const Dashboard = () => {
       method: "GET",
     })
     const data = await response.json()
-    console.log(data)
     if (data) {
       setUserDetails(data)
     } else {
@@ -29,6 +28,12 @@ const Dashboard = () => {
         <h1 className="text-xl  text-2xl m-2 p-2 ">
           Welcome {userDetails.name} !!
         </h1>
+        <button
+          className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
+          onClick={() => navigate(`/dashboard/${userDetails._id}/profile`)}
+        >
+          Update Profile
+        </button>
       </div>
     )
   )
