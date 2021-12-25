@@ -36,8 +36,6 @@ router.get("/:id", async (req, res) => {
     const club = await Club.findOne({ _id: req.params.id }).populate(
       "admins events"
     )
-    const clubs = await Club.find({})
-    console.log(clubs)
 
     res.send(club)
   } catch (err) {

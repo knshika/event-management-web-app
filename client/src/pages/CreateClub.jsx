@@ -34,8 +34,6 @@ const CreateClub = () => {
       alert("Successfully registered club")
       navigate(`/club/${data._id}`)
     }
-
-    console.log(data)
   }
 
   return (

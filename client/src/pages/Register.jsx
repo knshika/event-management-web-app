@@ -29,14 +29,10 @@ const Register = () => {
       body: JSON.stringify(formData),
     })
 
-    const data = await response.json()
-
     if (response.status === 200) {
       alert("Successfully registered ")
       navigate("/login")
     }
-
-    console.log(data)
   }
 
   return (
