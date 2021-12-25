@@ -1,6 +1,8 @@
 import React from "react"
+import { useDispatch } from "react-redux"
+import { logout } from "../state/slices/loginSlice"
 import { useLoginState } from "../state"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const NavLink = ({ link, children }) => {
   return (
@@ -11,17 +13,38 @@ const NavLink = ({ link, children }) => {
 }
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const loginState = useLoginState()
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate("/login")
+  }
 
   return (
     <div className="py-2 px-5 flex items-center bg-gray-500 ">
-      <h1 className="text-white font-bold text-lg ">EventManager</h1>
-
+      <button
+        className="text-white font-bold text-lg "
+        onClick={() => navigate("/")}
+      >
+        EventManager
+      </button>
+      <div className="text-white font-bold text-sm mr-auto">
+        {loginState.user && (
+          <>
+            <NavLink link="/clubs">clubs</NavLink>
+            <NavLink link="/events">events</NavLink>
+          </>
+        )}
+      </div>
       <div className="text-white font-bold text-sm ml-auto">
         {loginState.user ? (
           <>
-            <NavLink link="/profile">{loginState.user.name}</NavLink>
-            <NavLink link="/login">Logout</NavLink>
+            <NavLink link={`/dashboard/${loginState.user._id}`}>
+              {loginState.user.name}
+            </NavLink>
+            <button onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <>

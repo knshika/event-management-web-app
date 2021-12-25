@@ -1,9 +1,13 @@
 import React, { useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Navbar from "./components/Navbar"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import CreateClub from "./pages/CreateClub"
-import Navbar from "./components/Navbar"
+import HomePage from "./pages/HomePage"
+import ViewActiveEvents from "./pages/ViewActiveEvents"
+import ViewClubs from "./pages/ViewClubs"
+import ProfileUpdate from "./pages/ProfileUpdate"
 import UpdateClub from "./pages/UpdateClub"
 import ClubPage from "./pages/ClubPage"
 import Dashboard from "./pages/Dashboard"
@@ -39,9 +43,13 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
+        <Route path="/" exact element={<HomePage />} />
         <Route path="register" exact element={<Register />} />
         <Route path="login" exact element={<Login />} />
-        <Route path="user/:id" exact element={<Dashboard />} />
+        <Route path="events" exact element={<ViewActiveEvents />} />
+        <Route path="clubs" exact element={<ViewClubs />} />
+        <Route path="dashboard/:id/profile" exact element={<ProfileUpdate />} />
+        <Route path="dashboard/:id" exact element={<Dashboard />} />
         <Route path="club" exact element={<CreateClub />} />
         <Route path="club/:id/update" exact element={<UpdateClub />} />
         <Route path="club/:id" exact element={<ClubPage />} />
