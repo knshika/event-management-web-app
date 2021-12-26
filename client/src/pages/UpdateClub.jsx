@@ -91,27 +91,33 @@ const UpdateClub = () => {
   }, [])
 
   return clubDetails ? (
-    <div className="flex flex-col justify-center items-center m-2">
-      <h1 className="text-xl uppercase">Update {clubDetails.name} </h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 ">
+      <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md my-5">
+        <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+          Update {clubDetails.name}
+        </div>
 
-      <div className="flex flex-col m-2 w-full items-center">
-        <h2 className=" text-xl uppercase text-xl m-1">Admins</h2>
-        {clubDetails.admins.map((item, index) => (
-          <div className="flex justify-around w-full" key={index}>
-            <span className="p-1 " key={index}>
-              - {item.name}
-            </span>
-            <button
-              className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
-              onClick={() => handleAdminRemove(item._id)}
-            >
-              remove
-            </button>
-          </div>
-        ))}
+        <div className="flex flex-col m-2 w-full items-center">
+          <h2 className=" text-xl uppercase text-xl m-1">Admins</h2>
+          {clubDetails.admins.map((item, index) => (
+            <div className="flex justify-around w-full" key={index}>
+              <span className="p-1 " key={index}>
+                - {item.name}
+              </span>
+              <button
+                className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
+                onClick={() => handleAdminRemove(item._id)}
+              >
+                remove
+              </button>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          <Forms inputs={updateClubAdminsInput} onSubmit={updateClubAdmins} />
+          <Forms inputs={updateClubDetails} onSubmit={updateClub} />
+        </div>
       </div>
-      <Forms inputs={updateClubDetails} onSubmit={updateClub} />
-      <Forms inputs={updateClubAdminsInput} onSubmit={updateClubAdmins} />
     </div>
   ) : (
     <></>

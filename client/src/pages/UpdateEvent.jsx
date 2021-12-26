@@ -99,21 +99,28 @@ const UpdateEvent = () => {
     getEventDetails()
   }, [])
 
-  return eventDetails ? (
-    <div className="flex flex-col justify-center items-center m-2">
-      <h1 className="text-xl uppercase">Update {eventDetails.name} </h1>
-      <Forms inputs={updateEventInputs} onSubmit={updateEvent}>
-        <PrizesInput
-          prizes={eventDetails.prizes}
-          onChange={(prizes) =>
-            setEventDetails((data) => ({ ...data, prizes }))
-          }
-          showWinner={true}
-        />
-      </Forms>
-    </div>
-  ) : (
-    <></>
+  return (
+    eventDetails && (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 ">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md my-5">
+          <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+            Update {eventDetails.name}
+          </div>
+
+          <div className="mt-10">
+            <Forms inputs={updateEventInputs} onSubmit={updateEvent}>
+              <PrizesInput
+                prizes={eventDetails.prizes}
+                onChange={(prizes) =>
+                  setEventDetails((data) => ({ ...data, prizes }))
+                }
+                showWinner={true}
+              />
+            </Forms>
+          </div>
+        </div>
+      </div>
+    )
   )
 }
 
