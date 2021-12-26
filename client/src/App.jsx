@@ -1,10 +1,12 @@
 import React, { useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import CreateClub from "./pages/CreateClub"
 import HomePage from "./pages/HomePage"
+import Profile from "./pages/Profile"
 import ViewActiveEvents from "./pages/ViewActiveEvents"
 import ViewClubs from "./pages/ViewClubs"
 import ProfileUpdate from "./pages/ProfileUpdate"
@@ -48,7 +50,8 @@ const App = () => {
         <Route path="login" exact element={<Login />} />
         <Route path="events" exact element={<ViewActiveEvents />} />
         <Route path="clubs" exact element={<ViewClubs />} />
-        <Route path="dashboard/:id/profile" exact element={<ProfileUpdate />} />
+        <Route path="dashboard/:id/update" exact element={<ProfileUpdate />} />
+        <Route path="dashboard/:id/profile" exact element={<Profile />} />
         <Route path="dashboard/:id" exact element={<Dashboard />} />
         <Route path="club" exact element={<CreateClub />} />
         <Route path="club/:id/update" exact element={<UpdateClub />} />
@@ -62,6 +65,7 @@ const App = () => {
           element={<Participants />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
