@@ -68,41 +68,43 @@ const Participants = () => {
               This event has no participants yet
             </div>
           )}
-          {participants &&
-            participants.map((user, index) => (
-              <div
-                key={index}
-                className="flex p-5 mt-8 space-x-4 items-center shadow-lg max-w-sm rounded-md"
-              >
-                <div className="flex">
-                  <div>
-                    <h2 className=" font-semibold text-lg">{user.name}</h2>
-                    <p className="mt-1 text-gray-400 text-sm cursor-pointer">
-                      {user.email}
-                    </p>
-                  </div>
+          <div className="flex flex-wrap bg-gray-100 w-full p-8 py-8 mt-8 rounded-xl ">
+            {participants &&
+              participants.map((user, index) => (
+                <div
+                  key={index}
+                  className="flex p-5 space-x-4 items-center bg-white shadow-lg max-w-sm rounded-md"
+                >
+                  <div className="flex">
+                    <div>
+                      <h2 className=" font-semibold text-lg">{user.name}</h2>
+                      <p className="mt-1 text-gray-400 text-sm cursor-pointer">
+                        {user.email}
+                      </p>
+                    </div>
 
-                  {isClubAdmin && (
-                    <>
-                      <button
-                        className="m-2 py-2 px-1 border-2 rounded-lg uppercase focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-lg  transition duration-150 ease-in"
-                        onClick={() => handleRemove(user)}
-                      >
-                        Remove
-                      </button>
-                      <button
-                        className="m-2 px-1 border-2 rounded-lg uppercase focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-lg  transition duration-150 ease-in"
-                        onClick={() =>
-                          navigate(`dashboard/${user._id}/profile`)
-                        }
-                      >
-                        View
-                      </button>
-                    </>
-                  )}
+                    {isClubAdmin && (
+                      <>
+                        <button
+                          className="m-2 py-2 px-1 border-2 rounded-lg uppercase focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-lg  transition duration-150 ease-in"
+                          onClick={() => handleRemove(user)}
+                        >
+                          Remove
+                        </button>
+                        <button
+                          className="m-2 px-1 border-2 rounded-lg uppercase focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-lg  transition duration-150 ease-in"
+                          onClick={() =>
+                            navigate(`dashboard/${user._id}/profile`)
+                          }
+                        >
+                          View
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
       </div>
     )

@@ -50,9 +50,9 @@ const App = () => {
         <Route path="login" exact element={<Login />} />
         <Route path="events" exact element={<ViewActiveEvents />} />
         <Route path="clubs" exact element={<ViewClubs />} />
-        <Route path="dashboard/:id/update" exact element={<ProfileUpdate />} />
-        <Route path="dashboard/:id/profile" exact element={<Profile />} />
-        <Route path="dashboard/:id" exact element={<Dashboard />} />
+        <Route path="profile/:id/update" exact element={<ProfileUpdate />} />
+        <Route path="profile/:id/" exact element={<Profile />} />
+        <Route path="dashboard" exact element={<Dashboard />} />
         <Route path="club" exact element={<CreateClub />} />
         <Route path="club/:id/update" exact element={<UpdateClub />} />
         <Route path="club/:id" exact element={<ClubPage />} />

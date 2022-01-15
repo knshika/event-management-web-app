@@ -151,7 +151,7 @@ router.delete("/:id/participants", async (req, res) => {
 //get all event details
 router.get("/", async (req, res) => {
   try {
-    const events = await Event.find({}).populate("participants")
+    const events = await Event.find({}).populate("participants club")
 
     res.send(events)
   } catch (err) {
