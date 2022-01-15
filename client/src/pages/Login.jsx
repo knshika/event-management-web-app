@@ -39,7 +39,7 @@ const Login = () => {
           Login Now
         </div>
         <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
-          Enter your credentials
+          Log in to access your account
         </div>
         <div className="mt-10">
           <Forms inputs={loginInputs} onSubmit={loginUser} />
