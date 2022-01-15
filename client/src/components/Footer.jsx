@@ -3,7 +3,7 @@ import { GrMail } from "react-icons/gr"
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-500  w-full pb-2">
+    <footer className="bg-gray-800  w-full pb-2">
       <div className="max-w-screen-xl mx-auto">
         <div className="pt-4 flex max-w-xs mx-auto items-center justify-between">
           <a
