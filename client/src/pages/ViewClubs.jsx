@@ -25,19 +25,74 @@ const ViewClubs = () => {
   }, [])
   return (
     clubsDetails && (
-      <div>
-        <h1>Below are the all clubs</h1>
-        {clubsDetails.map((club, index) => (
-          <div className="flex " key={index}>
-            <div>{club.name}</div>
-            <button
-              className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
-              onClick={() => handleView(club._id)}
-            >
-              View Details
-            </button>
+      <div className="min-h-screen flex w-full justify-center bg-gray-100">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-full max-w-5xl">
+          {clubsDetails?.length > 0 ? (
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+                  College Clubs!!
+                </div>
+                <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                  Explore the clubs of your college !!
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center">
+                <div className=" relative ">
+                  <input
+                    type="text"
+                    id='"form-subscribe-Search'
+                    className=" rounded-lg flex-1 border-2 border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none "
+                    placeholder="Enter a title"
+                  />
+                </div>
+                <button
+                  className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                  type="submit"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-4 self-center text-xl sm:text-sm text-gray-800 ">
+              There are no clubs registered yet
+            </div>
+          )}
+          <div className="flex flex-wrap bg-gray-100 w-full p-2 py-8 rounded-xl ">
+            {clubsDetails &&
+              clubsDetails.map((club, index) => (
+                <div
+                  key={index}
+                  className="overflow-hidden shadow-lg rounded-lg  w-52  m-auto"
+                >
+                  <img
+                    alt="club photo"
+                    src="/images/clubs.svg"
+                    className="max-h-40 w-full object-cover bg-white"
+                  />
+                  <div className="bg-white dark:bg-gray-800 w-full p-4">
+                    <p className="text-indigo-500 text-sm font-medium">
+                      {club.name}
+                    </p>
+
+                    <p className="text-gray-400 dark:text-gray-300 text-sm">
+                      {club.description}
+                    </p>
+                    <div className="flex items-center mt-4">
+                      <button
+                        className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                        onClick={() => handleView(club._id)}
+                      >
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
-        ))}
+        </div>
       </div>
     )
   )
