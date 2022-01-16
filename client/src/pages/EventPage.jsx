@@ -9,6 +9,7 @@ const EventPage = () => {
   const { eventId } = useParams()
   const navigate = useNavigate()
   const [eventDetails, setEventDetails] = useState(null)
+  const [showPrize, setShowPrize] = useState(false)
 
   const clubAdmins = eventDetails?.club ? eventDetails?.club.admins : []
   const { user } = useLoginState()
@@ -85,88 +86,241 @@ const EventPage = () => {
     getEventDetails()
   }, [])
 
-  return eventDetails ? (
-    <div className="flex flex-col justify-center items-center bg-blue-100 m-2">
-      <h1 className="text-xl uppercase  text-2xl m-2 p-2 ">
-        {eventDetails.club.name} presents {eventDetails.name}
-      </h1>
-      <p>
-        The event {eventDetails.description}
-        <br />
-        It is {eventDetails.details.type} type and registration fee is{" "}
-        {eventDetails.details.registrationFee}
-      </p>
-
-      {eventDetails.prizes.length > 0 && (
-        <div>
-          <h5>Prizes</h5>
-          {eventDetails.prizes.map((prize, idx) => (
-            <div key={idx} className="m-2">
-              <span>Type : {prize.type}</span> <br />
-              <span>Amount : {prize.amount}</span>
-              <br />
-              <span>Winner : {prize?.winner?.name}</span>
-            </div>
-          ))}
-        </div>
-      )}
-      {eventEnded ? (
-        <span>Event has ended</span>
-      ) : eventStarted ? (
-        <span>Event has started</span>
-      ) : registrationStarted ? (
-        isParticipant ? (
+  return (
+    eventDetails && (
+      <div className="min-h-screen flex w-full justify-center bg-gray-100">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-3/4 max-w-4xl">
           <div>
-            <span>You are already registered</span>{" "}
+            <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+              {eventDetails.name}
+            </div>
+            <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+              {eventDetails.description}
+            </div>
+          </div>
+          <div className="bg-gray-100 rounded-xl p-2 flex flex-col my-4 shadow-md">
+            <div className="flex">
+              <div className="my-2 px-4  ">
+                <dl>
+                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Club Name
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {eventDetails.club.name}
+                    </dd>
+                  </div>
+                  <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Event Type
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {eventDetails.details.type}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Registration Fee
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {eventDetails.details.registrationFee != 0
+                        ? eventDetails.details.registrationFee
+                        : "Free"}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+              <div className="my-2 px-4  ">
+                <dl>
+                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Registration
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {registrationStarted && !eventStarted && !eventEnded
+                        ? "Opened"
+                          ? !registrationStarted
+                          : "Starting soon"
+                        : "Closed"}
+                    </dd>
+                  </div>
+                  <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Status
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {!eventEnded && eventStarted
+                        ? "Active"
+                        : eventEnded
+                        ? "Ended"
+                        : "Starting Soon"}
+                    </dd>
+                  </div>
+                  <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Result
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {eventDetails.dates.result
+                        ? eventDetails.dates.result.split("T")[0]
+                        : "Not declared"}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+            <div>
+              {/* <button onClick={setShowPrize(true)}>View Prizes</button> */}
+              {eventDetails.prizes.length > 0 && (
+                <div className="flex flex-col w-full ">
+                  <div className="mt-4  text-sm sm:text-lg text-gray-800 px-6">
+                    Prizes
+                  </div>
+                  <div className="flex">
+                    {eventDetails.prizes.map((prize, idx) => (
+                      <div key={idx} className="my-2 px-4  ">
+                        <dl>
+                          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Type
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                              {prize.type}
+                            </dd>
+                          </div>
+                          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Amount
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                              {prize.amount}
+                            </dd>
+                          </div>
+                          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium text-gray-500">
+                              Winner
+                            </dt>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                              {prize?.winner?.name ? prize?.winner?.name : "-"}
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-1/4">
+          <div className="font-medium  text-xl sm:text-3xl text-gray-800">
+            Team {eventDetails.club.name}
+          </div>
+          <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+            {eventEnded ? (
+              <span className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                Event has ended
+              </span>
+            ) : eventStarted ? (
+              <span className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                Event has started
+              </span>
+            ) : registrationStarted ? (
+              isParticipant ? (
+                <div>
+                  <span className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                    You are already registered
+                  </span>{" "}
+                  <button
+                    className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                    onClick={() => handleLeave(user)}
+                  >
+                    Leave
+                  </button>
+                </div>
+              ) : (
+                <button
+                  className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                  onClick={handleRegister}
+                >
+                  Register
+                </button>
+              )
+            ) : (
+              <span className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                Registration not open yet, come back later
+              </span>
+            )}
             <button
-              className="m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
-              onClick={() => handleLeave(user)}
+              className="uppercase my-4 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+              onClick={handleViewParticipants}
             >
-              Leave
+              Show Participants
             </button>
           </div>
-        ) : (
-          <button
-            className="m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
-            onClick={handleRegister}
-          >
-            Register
-          </button>
-        )
-      ) : (
-        <span>Registration not open yet, come back later</span>
-      )}
+          <div className="flex flex-col items-start font-medium  text-xl sm:text-3xl text-gray-800">
+            <div className="mt-4 text-xl sm:text-lg text-gray-800">
+              Admin Section
+            </div>
+            {isClubAdmin && (
+              <div className="flex flex-col ">
+                <button
+                  className="uppercase my-4 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                  onClick={handleUpdate}
+                >
+                  Update Details
+                </button>
 
-      <button
-        className="m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
-        onClick={handleViewParticipants}
-      >
-        Show Participants
-      </button>
-
-      {isClubAdmin ? (
-        <div>
-          <button
-            className="m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
-            onClick={handleUpdate}
-          >
-            Update Details
-          </button>
-
-          <button
-            className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-blue-200"
-            onClick={handleDelete}
-          >
-            Delete Event
-          </button>
+                <button
+                  className="uppercase my-4 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                  onClick={handleDelete}
+                >
+                  Delete Event
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-      ) : (
-        <></>
-      )}
-    </div>
-  ) : (
-    <div></div>
+      </div>
+    )
   )
 }
 
 export default EventPage
+//<button onClick={setShowPrize(true)}>View Prizes</button>
+// {eventDetails.prizes.length > 0 && showPrize && (
+//   <div>
+//     <div>Prizes:</div>
+//     {eventDetails.prizes.map((prize, idx) => (
+//       <div key={idx} className="my-2 px-4  ">
+//         <dl>
+//           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+//             <dt className="text-sm font-medium text-gray-500">
+//               Type
+//             </dt>
+//             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+//               {prize.type}
+//             </dd>
+//           </div>
+//           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+//             <dt className="text-sm font-medium text-gray-500">
+//               Amount
+//             </dt>
+//             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+//               {prize.amount}
+//             </dd>
+//           </div>
+//           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+//             <dt className="text-sm font-medium text-gray-500">
+//               Winner
+//             </dt>
+//             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+//               {prize?.winner?.name ? prize?.winner?.name : "-"}
+//             </dd>
+//           </div>
+//         </dl>
+//       </div>
+//     ))}
+//   </div>
+// )}
