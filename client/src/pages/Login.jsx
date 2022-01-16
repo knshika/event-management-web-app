@@ -27,14 +27,14 @@ const Login = () => {
       localStorage.setItem("token", token)
       alert("Successfully logged in")
       dispatch(login({ user, token }))
-      navigate(`/dashboard/${user._id}`)
+      navigate("/dashboard")
     } else {
       alert("Something is wrong!! Check your email or password")
     }
   }
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md">
+    <div className="min-h-screen flex flex-col items-center bg-gray-100">
+      <div className="flex flex-col bg-white mt-4 shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md">
         <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
           Login Now
         </div>

@@ -100,7 +100,7 @@ const Profile = () => {
             <button
               type="submit"
               className="uppercase my-4 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
-              onClick={() => navigate(`/dashboard/${userDetails._id}/update`)}
+              onClick={() => navigate(`/profile/${userDetails._id}/update`)}
             >
               Update Profile
             </button>
