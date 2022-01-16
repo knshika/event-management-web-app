@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-screen-xl mx-auto">
         <div className="pt-4 flex max-w-xs mx-auto items-center justify-between">
           <a
-            href="#"
+            href="https://twitter.com/knshika"
             className="text-gray-400 hover:text-gray-200  transition-colors duration-200"
           >
             <svg
@@ -22,7 +22,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="https://github.com/knshika"
             className="text-gray-400 hover:text-gray-200  transition-colors duration-200"
           >
             <svg
@@ -37,7 +37,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/pooja-knshika/"
             className="text-gray-400 hover:text-gray-200  transition-colors duration-200"
           >
             <svg
@@ -52,7 +52,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="mailto:knshika03@gmail.com"
             className="text-gray-400 hover:text-gray-200  transition-colors duration-200"
           >
             <GrMail />
