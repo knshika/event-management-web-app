@@ -99,7 +99,7 @@ const Profile = () => {
           <div className="flex flex-col items-center mb-4">
             <button
               type="submit"
-              className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-2xl py-2 w-1/4 transition duration-150 ease-in"
+              className="uppercase my-4 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
               onClick={() => navigate(`/dashboard/${userDetails._id}/update`)}
             >
               Update Profile

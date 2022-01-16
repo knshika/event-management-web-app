@@ -68,14 +68,14 @@ export const Forms = ({ inputs, onSubmit, children }) => {
 
       <button
         type="submit"
-        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-2xl py-2 w-full transition duration-150 ease-in"
+        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-800 hover:bg-gray-900 rounded-2xl py-2 w-full transition duration-150 ease-in"
         onClick={handleSubmit} //problem2 from=>div , cancel
       >
         Submit
       </button>
       <button
         type="submit"
-        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-2xl py-2 w-full transition duration-150 ease-in"
+        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-800 hover:bg-gray-900 rounded-2xl py-2 w-full transition duration-150 ease-in"
         onClick={() => navigate(-1)}
       >
         Cancel

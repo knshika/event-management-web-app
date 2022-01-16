@@ -62,7 +62,7 @@ function PrizeItem({ prize, onChange, onRemove, showWinner }) {
           )}
         </div>
         <button
-          className="flex mt-1 items-center justify-center focus:outline-none text-white text-sm sm:text-base w-5/12 bg-gray-500 hover:bg-gray-600 rounded-2xl  transition duration-150 ease-in"
+          className="flex mt-1 items-center justify-center focus:outline-none text-white text-sm sm:text-base w-5/12 bg-gray-800 hover:bg-gray-900 rounded-2xl  transition duration-150 ease-in"
           onClick={onRemove}
         >
           Remove
@@ -103,7 +103,7 @@ export default function PrizesInput({ prizes, onChange, showWinner }) {
       ))}
 
       <button
-        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-500 hover:bg-gray-600 rounded-2xl py-2 w-full transition duration-150 ease-in"
+        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-800 hover:bg-gray-900 rounded-2xl py-2 w-full transition duration-150 ease-in"
         onClick={addPrize}
       >
         Add prize
