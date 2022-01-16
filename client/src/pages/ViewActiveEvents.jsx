@@ -60,27 +60,27 @@ const ViewActiveEvents = () => {
               There are no active events of any club yet!!
             </div>
           )}
-          <div className="flex flex-wrap bg-gray-100 w-full p-2 py-8 rounded-xl ">
+          <div className="flex flex-wrap  w-full p-2 py-8 rounded-xl ">
             {eventsDetails &&
               eventsDetails.map((event, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden shadow-lg rounded-lg  w-52  m-auto"
+                  className="overflow-hidden shadow-lg bg-gray-50 rounded-lg  w-56  m-auto"
                 >
                   <img
                     alt="event photo"
                     src="/images/events.svg"
-                    className="max-h-40 w-full object-cover bg-white"
+                    className="max-h-40 w-full object-cover p-2"
                   />
-                  <div className="bg-white dark:bg-gray-800 w-full p-4">
-                    <p className="text-indigo-500 text-sm font-medium">
-                      {event.club.name}
+                  <div className=" dark:bg-gray-800 w-full p-4">
+                    <p className="text-gray-800 text-lg font-medium">
+                      {event.name}
                       {/* problem why how clubs */}
                     </p>
-                    <p className="text-gray-800 dark:text-white text-lg font-medium mb-2">
-                      {event.name}
+                    <p className="text-gray-600 dark:text-white text-xs font-medium mb-2">
+                      {event.club.name}
                     </p>
-                    <p className="text-gray-400 dark:text-gray-300 text-sm">
+                    <p className="capitalize text-gray-400 dark:text-gray-300 text-xs">
                       {event.description}
                     </p>
                     <div className="flex items-center mt-4">

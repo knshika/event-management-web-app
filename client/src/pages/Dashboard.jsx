@@ -63,19 +63,19 @@ const Dashboard = () => {
               You have not registered in any events
             </div>
           )}
-          <div className="flex flex-wrap bg-gray-100 w-full p-2 py-8 rounded-xl ">
+          <div className="flex flex-wrap  w-full p-2 py-8 rounded-xl ">
             {userDetails.participatedEvents &&
               userDetails.participatedEvents.map((event, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden shadow-lg rounded-lg h-72 py-2 w-52 cursor-pointer m-auto"
+                  className="overflow-hidden p-2 shadow-lg bg-gray-50 rounded-lg h-72 py-2 w-56 cursor-pointer m-auto"
                 >
                   <img
                     alt="event photo"
                     src="/images/events.svg"
-                    className="max-h-40 w-full object-cover bg-white"
+                    className="max-h-40 w-full object-cover "
                   />
-                  <div className="bg-white dark:bg-gray-800 w-full p-4">
+                  <div className=" dark:bg-gray-800 w-full p-4">
                     <p className="text-indigo-500 text-sm font-medium">
                       {console.log(event.club?.name)}
                       {/* problem why how clubs */}
@@ -103,13 +103,16 @@ const Dashboard = () => {
           <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
             {userDetails.name}
           </div>
+          <div className=" self-center text-xl sm:text-sm text-gray-500">
+            {userDetails.email}
+          </div>
           {userDetails?.superAdmin && (
             <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
               Status : SuperAdmin
             </div>
           )}
-          {user?.superAdmin && (
-            <div className="flex flex-col">
+          {user?.superAdmin && userDetails?.adminOfClub?.length == 0 ? (
+            <div className="flex flex-col mt-2">
               <button
                 className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-800 hover:bg-gray-900 text-white"
                 onClick={() => navigate("/club")}
@@ -121,6 +124,21 @@ const Dashboard = () => {
                 onClick={() => navigate("/clubs")}
               >
                 View Clubs
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col mt-2">
+              <button
+                className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-800 hover:bg-gray-900 text-white"
+                onClick={() => navigate("/club")}
+              >
+                Update profile
+              </button>
+              <button
+                className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-800 hover:bg-gray-900 text-white"
+                onClick={() => navigate("/events")}
+              >
+                More Events
               </button>
             </div>
           )}

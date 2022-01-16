@@ -2,8 +2,8 @@ import React from "react"
 
 const HomePage = () => {
   return (
-    <main className="min-h-screen flex w-full justify-center bg-gray-100  relative overflow-hidden ">
-      <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-3/4   relative z-20 items-center">
+    <main className="min-h-screen flex w-full items-center bg-gray-100  relative overflow-hidden ">
+      <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-11/12   relative z-20 items-center">
         <div className="container mx-auto px-6 flex flex-col justify-between items-center relative py-8">
           <div className="flex flex-col">
             <h1 className="font-light w-full uppercase text-center text-4xl sm:text-5xl dark:text-white text-gray-800">
@@ -41,6 +41,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-// <div>
-//   <h1>Welcome to your personal event manager of clubs events</h1>
-// </div>

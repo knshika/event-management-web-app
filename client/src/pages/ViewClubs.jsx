@@ -60,24 +60,24 @@ const ViewClubs = () => {
               There are no clubs registered yet
             </div>
           )}
-          <div className="flex flex-wrap bg-gray-100 w-full p-2 py-8 rounded-xl ">
+          <div className="flex flex-wrap  w-full p-2 py-8 rounded-xl ">
             {clubsDetails &&
               clubsDetails.map((club, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden shadow-lg rounded-lg  w-52  m-auto"
+                  className="overflow-hidden bg-gray-50 shadow-lg rounded-lg  w-56  m-auto p-2"
                 >
                   <img
                     alt="club photo"
                     src="/images/clubs.svg"
-                    className="max-h-40 w-full object-cover bg-white"
+                    className="max-h-40 w-full object-cover "
                   />
-                  <div className="bg-white dark:bg-gray-800 w-full p-4">
-                    <p className="text-indigo-500 text-sm font-medium">
+                  <div className=" dark:bg-gray-800 w-full p-4">
+                    <p className="text-gray-600 text-base font-medium">
                       {club.name}
                     </p>
 
-                    <p className="text-gray-400 dark:text-gray-300 text-sm">
+                    <p className="text-gray-400 dark:text-gray-300 text-xs">
                       {club.description}
                     </p>
                     <div className="flex items-center mt-4">

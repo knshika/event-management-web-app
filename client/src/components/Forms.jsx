@@ -43,7 +43,7 @@ export const Forms = ({ inputs, onSubmit, children }) => {
             : formData[item.name]
 
         return (
-          <div key={index} className="flex flex-col mb-5">
+          <div key={index} className="flex flex-col mb-5 ">
             {item.label && (
               <label
                 className="mb-1 text-xs tracking-wide text-gray-600"
@@ -54,7 +54,7 @@ export const Forms = ({ inputs, onSubmit, children }) => {
             )}
 
             <input
-              className="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
+              className="text-sm placeholder-gray-500 pl-10 pr-4  rounded-xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
               id={item.name}
               {...item}
               value={value}
@@ -68,14 +68,14 @@ export const Forms = ({ inputs, onSubmit, children }) => {
 
       <button
         type="submit"
-        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-800 hover:bg-gray-900 rounded-2xl py-2 w-full transition duration-150 ease-in"
+        className="uppercase my-2 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base  hover:bg-gray-900"
         onClick={handleSubmit} //problem2 from=>div , cancel
       >
         Submit
       </button>
       <button
         type="submit"
-        className="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gray-800 hover:bg-gray-900 rounded-2xl py-2 w-full transition duration-150 ease-in"
+        className="uppercase my-2 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base  hover:bg-gray-900"
         onClick={() => navigate(-1)}
       >
         Cancel
