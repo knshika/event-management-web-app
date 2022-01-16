@@ -90,37 +90,55 @@ const UpdateClub = () => {
     getClubDetails()
   }, [])
 
-  return clubDetails ? (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 ">
-      <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md my-5">
-        <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
-          Update {clubDetails.name}
-        </div>
+  return (
+    clubDetails && (
+      <div className=" flex flex-col justify-center  bg-gray-100 p-2">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md  m-auto mt-4">
+          <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+            Update {clubDetails.name}
+          </div>
 
-        <div className="flex flex-col m-2 w-full items-center">
-          <h2 className=" text-xl uppercase text-xl m-1">Admins</h2>
-          {clubDetails.admins.map((item, index) => (
-            <div className="flex justify-around w-full" key={index}>
-              <span className="p-1 " key={index}>
-                - {item.name}
-              </span>
-              <button
-                className=" m-2 py-2 px-1 border-2 rounded-lg uppercase bg-gray-300"
-                onClick={() => handleAdminRemove(item._id)}
-              >
-                remove
-              </button>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10">
-          <Forms inputs={updateClubAdminsInput} onSubmit={updateClubAdmins} />
           <Forms inputs={updateClubDetails} onSubmit={updateClub} />
         </div>
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-4 rounded-3xl w-1/2 max-w-md m-auto mt-4 ">
+          <div className="flex flex-col m-2 w-full ">
+            <h2 className=" font-medium  text-2xl sm:text-2xl text-gray-700 m-2">
+              Update Admins
+            </h2>
+            <div className="flex flex-wrap min-w-[100px] mt-2">
+              {clubDetails.admins.map((item, index) => (
+                <div key={index} className="p-2 min-w-[52px]">
+                  <div className="flex-col  flex justify-center items-center ">
+                    <div className="flex-shrink-0">
+                      <img
+                        alt="profile"
+                        src="/images/avatarMale.svg"
+                        className="mx-auto object-cover rounded-full h-20 w-20 "
+                      />
+                    </div>
+                    <div className="mt-2 text-center flex flex-col">
+                      <span className="text-gray-600 dark:text-white text-base font-medium">
+                        {item.name}
+                      </span>
+                      <span className="text-gray-400 text-xs">
+                        {item.email}
+                      </span>
+                    </div>
+                    <button
+                      className="uppercase my-2 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                      onClick={() => handleAdminRemove(item._id)}
+                    >
+                      remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <Forms inputs={updateClubAdminsInput} onSubmit={updateClubAdmins} />
+        </div>
       </div>
-    </div>
-  ) : (
-    <></>
+    )
   )
 }
 
