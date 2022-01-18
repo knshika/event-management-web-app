@@ -28,7 +28,7 @@ const EventPage = () => {
 
   const registrationStarted = today >= registrationStart
   const eventStarted = today >= eventStart
-  const eventEnded = today >= eventEnd
+  const eventEnded = today > eventEnd
 
   const handleUpdate = () => {
     navigate(`/event/${eventId}/update`)
@@ -95,7 +95,10 @@ const EventPage = () => {
           </div>
           <div className=" rounded-xl p-2 flex mt-4 ">
             <div className=" rounded-xl px-4 flex-1 flex-col mt-4  ">
-              <div className="font-medium text-xl text-gray-700 mt-2">
+              <div className=" capitalize text-lg  text-gray-600">
+                {eventDetails.description}
+              </div>
+              <div className="mt-2 font-medium text-xl text-gray-700 mt-2">
                 <span>Date : </span>
                 <span>{eventDetails.dates.start.split("T")[0]} </span>
                 {eventDetails.dates.start.split("T")[0] !=
@@ -113,8 +116,16 @@ const EventPage = () => {
                     : "Starting Soon"}
                 </div>
               </div>
-              <div className="mt-4 capitalize text-lg  text-gray-600">
-                {eventDetails.description}
+              <div className="flex my-2">
+                <span className="text-sm mr-2 font-medium text-gray-500">
+                  Result
+                </span>
+
+                <span className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  {eventDetails.dates.result
+                    ? eventDetails.dates.result.split("T")[0]
+                    : "Not declared"}
+                </span>
               </div>
               <div className="flex">
                 <div>
@@ -129,50 +140,44 @@ const EventPage = () => {
                   <div className="capitalize self-center text-lg  text-gray-600">
                     <span>Registration : </span>
                     <span>
-                      {registrationStarted && !eventStarted && !eventEnded
+                      {registrationStarted && !eventEnded
                         ? "Opened"
-                          ? !registrationStarted
-                          : "Starting soon"
+                        : !registrationStarted && !eventStarted && eventEnded
+                        ? "Starting soon"
                         : "Closed"}
                     </span>
                   </div>
-                </div>
-                <div>
-                  {registrationStart &&
-                    !eventEnded &&
-                    (isParticipant ? (
-                      <div>
-                        <span className="mt-4 self-center text-xl sm:text-sm text-gray-800">
-                          You are already registered
-                        </span>{" "}
+                  <div className="mt-4 flex">
+                    {registrationStart &&
+                      !eventEnded &&
+                      (isParticipant ? (
+                        <div>
+                          <button
+                            className="uppercase rounded-lg py-2 px-4 bg-gray-500 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-500"
+                            disabled
+                          >
+                            Registered
+                          </button>
+                          {/* <span className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+                            Registered
+                          </span>{" "} */}
+                          <button
+                            className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
+                            onClick={() => handleLeave(user)}
+                          >
+                            Leave
+                          </button>
+                        </div>
+                      ) : (
                         <button
                           className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
-                          onClick={() => handleLeave(user)}
+                          onClick={handleRegister}
                         >
-                          Leave
+                          Register
                         </button>
-                      </div>
-                    ) : (
-                      <button
-                        className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
-                        onClick={handleRegister}
-                      >
-                        Register
-                      </button>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex my-2">
-                <span className="text-sm mr-2 font-medium text-gray-500">
-                  Result
-                </span>
-
-                <span className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {eventDetails.dates.result
-                    ? eventDetails.dates.result.split("T")[0]
-                    : "Not declared"}
-                </span>
               </div>
             </div>
             <div className=" rounded-xl p-2 flex my-4">
@@ -219,7 +224,7 @@ const EventPage = () => {
             </div>
             <div className="mt-4">
               <span className="text-sm font-medium text-gray-500">
-                Event Type{" "}
+                Event Type{"  "}
               </span>
               <span className="capitalize mt-1 text-sm text-gray-700 sm:mt-0 sm:col-span-2">
                 {eventDetails.details.type}
@@ -242,9 +247,9 @@ const EventPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 mt-4 rounded-3xl ">
-            <div className="text-2xl  text-gray-800">Admin Section</div>
-            {isClubAdmin && (
+          {isClubAdmin && (
+            <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 mt-4 rounded-3xl ">
+              <div className="text-2xl  text-gray-800">Admin Section</div>
               <div className="flex flex-col mt-2">
                 <button
                   className=" uppercase my-2 rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
@@ -260,8 +265,8 @@ const EventPage = () => {
                   Delete Event
                 </button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     )
