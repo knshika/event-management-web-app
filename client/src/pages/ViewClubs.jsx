@@ -65,7 +65,7 @@ const ViewClubs = () => {
               clubsDetails.map((club, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden bg-gray-50 shadow-lg rounded-lg  w-56  m-auto p-2"
+                  className="overflow-hidden bg-gray-100 shadow-md rounded-lg  w-56  m-auto p-2"
                 >
                   <img
                     alt="club photo"

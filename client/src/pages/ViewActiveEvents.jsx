@@ -65,7 +65,7 @@ const ViewActiveEvents = () => {
               eventsDetails.map((event, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden shadow-lg bg-gray-50 rounded-lg  w-56  m-auto"
+                  className="overflow-hidden shadow-md bg-gray-100 rounded-lg  w-56  m-auto"
                 >
                   <img
                     alt="event photo"
