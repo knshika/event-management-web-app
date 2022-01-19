@@ -25,8 +25,8 @@ const ViewClubs = () => {
   }, [])
   return (
     clubsDetails && (
-      <div className="min-h-screen flex w-full justify-center bg-gray-100">
-        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-full max-w-5xl">
+      <div className="min-h-screen flex w-full justify-center bg-gray-200">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-full max-w-6xl">
           {clubsDetails?.length > 0 ? (
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -65,7 +65,7 @@ const ViewClubs = () => {
               clubsDetails.map((club, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden bg-gray-100 shadow-md rounded-lg  w-56  m-auto p-2"
+                  className="overflow-hidden bg-gray-100 shadow-md rounded-lg  w-56  m-2 p-2"
                 >
                   <img
                     alt="club photo"

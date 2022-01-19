@@ -92,7 +92,7 @@ const UpdateClub = () => {
 
   return (
     clubDetails && (
-      <div className=" flex flex-col justify-center  bg-gray-100 p-2">
+      <div className=" flex flex-col justify-center  bg-gray-200 p-2">
         <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-1/2 max-w-md  m-auto mt-4">
           <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
             Update {clubDetails.name}

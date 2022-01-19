@@ -58,7 +58,7 @@ const ClubPage = () => {
   return (
     clubDetails &&
     user && (
-      <div className="min-h-screen flex w-full justify-center bg-gray-100">
+      <div className="min-h-screen flex w-full justify-center bg-gray-200">
         <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-2/3 max-w-4xl">
           <div className="px-4">
             <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">

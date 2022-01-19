@@ -25,8 +25,8 @@ const ViewActiveEvents = () => {
   }, [])
   return (
     eventsDetails && (
-      <div className="min-h-screen flex w-full justify-center bg-gray-100">
-        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-full max-w-5xl">
+      <div className="min-h-screen flex w-full justify-center bg-gray-200">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-full max-w-6xl">
           {eventsDetails?.length > 0 ? (
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -65,7 +65,7 @@ const ViewActiveEvents = () => {
               eventsDetails.map((event, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden shadow-md bg-gray-100 rounded-lg  w-56  m-auto"
+                  className="overflow-hidden shadow-md bg-gray-100 rounded-lg  w-56  m-2"
                 >
                   <img
                     alt="event photo"

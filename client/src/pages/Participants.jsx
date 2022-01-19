@@ -54,7 +54,7 @@ const Participants = () => {
 
   return (
     eventDetails && (
-      <div className="min-h-screen flex flex-col items-center w-full bg-gray-100">
+      <div className="min-h-screen flex flex-col items-center w-full bg-gray-200">
         <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl mt-5 w-full max-w-5xl">
           <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
             {eventDetails.club.name} presents {eventDetails.name}

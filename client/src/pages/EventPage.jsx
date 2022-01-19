@@ -88,7 +88,7 @@ const EventPage = () => {
 
   return (
     eventDetails && (
-      <div className="min-h-screen flex w-full justify-center bg-gray-100">
+      <div className="min-h-screen flex w-full justify-center bg-gray-200">
         <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 m-auto rounded-3xl mt-5 w-3/4 max-w-5xl">
           <div className="font-medium text-4xl text-gray-800 pl-6">
             {eventDetails.name}

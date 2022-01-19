@@ -25,7 +25,7 @@ const Profile = () => {
   }, [])
   return (
     userDetails && (
-      <div className="min-h-screen flex flex-col items-center  bg-gray-100">
+      <div className="min-h-screen flex flex-col items-center  bg-gray-200">
         <div className="bg-white max-w-2xl shadow overflow-hidden sm:rounded-lg mt-10">
           <div className="px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
