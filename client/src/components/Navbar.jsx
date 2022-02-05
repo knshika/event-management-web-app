@@ -40,7 +40,7 @@ const Navbar = () => {
         </button>
 
         {/* <div className="flex items-center">
-          <nav className=" text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden"> */}
+          <nav className=" text-gray-800  uppercase text-lg lg:flex items-center hidden"> */}
         <div className=" flex text-white font-bold text-sm mr-auto">
           {loginState.user && (
             <>
@@ -90,9 +90,9 @@ const Navbar = () => {
           </a> */}
         {/* </nav> */}
         {/* <button className="lg:hidden flex flex-col ml-4">
-          <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
-          <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
-          <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
+          <span className="w-6 h-1 bg-gray-800  mb-1"></span>
+          <span className="w-6 h-1 bg-gray-800  mb-1"></span>
+          <span className="w-6 h-1 bg-gray-800  mb-1"></span>
         </button> */}
         {/* </div> */}
       </div>

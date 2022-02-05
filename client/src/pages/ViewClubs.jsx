@@ -72,14 +72,12 @@ const ViewClubs = () => {
                     src="/images/clubs.svg"
                     className="max-h-40 w-full object-cover "
                   />
-                  <div className=" dark:bg-gray-800 w-full p-4">
+                  <div className="  w-full p-4">
                     <p className="text-gray-600 text-base font-medium">
                       {club.name}
                     </p>
 
-                    <p className="text-gray-400 dark:text-gray-300 text-xs">
-                      {club.description}
-                    </p>
+                    <p className="text-gray-400  text-xs">{club.description}</p>
                     <div className="flex items-center mt-4">
                       <button
                         className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"

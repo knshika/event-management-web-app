@@ -75,15 +75,15 @@ const Dashboard = () => {
                     src="/images/events.svg"
                     className="max-h-40 w-full object-cover "
                   />
-                  <div className=" dark:bg-gray-800 w-full p-4">
+                  <div className="  w-full p-4">
                     <p className="text-indigo-500 text-sm font-medium">
                       {console.log(event.club?.name)}
                       {/* problem why how clubs */}
                     </p>
-                    <p className="text-gray-800 dark:text-white text-lg font-medium mb-2">
+                    <p className="text-gray-800  text-lg font-medium mb-2">
                       {event.name}
                     </p>
-                    <p className="text-gray-400 dark:text-gray-300 text-sm">
+                    <p className="text-gray-400  text-sm">
                       {event.description}
                     </p>
                     <div className="flex items-center mt-4">

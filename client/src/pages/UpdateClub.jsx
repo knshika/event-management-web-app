@@ -117,7 +117,7 @@ const UpdateClub = () => {
                       />
                     </div>
                     <div className="mt-2 text-center flex flex-col">
-                      <span className="text-gray-600 dark:text-white text-base font-medium">
+                      <span className="text-gray-600  text-base font-medium">
                         {item.name}
                       </span>
                       <span className="text-gray-400 text-xs">

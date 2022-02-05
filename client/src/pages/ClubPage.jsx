@@ -69,7 +69,7 @@ const ClubPage = () => {
             </div>
           </div>
 
-          <div className="p-4 bg-white dark:bg-gray-800 mt-4 ">
+          <div className="p-4 bg-white  mt-4 ">
             <p className="font-medium self-center text-xl sm:text-2xl text-gray-700 ">
               Our Events
             </p>
@@ -85,10 +85,10 @@ const ClubPage = () => {
                     className="max-h-40 w-full object-cover "
                   />
                   <div className=" w-full p-4">
-                    <p className="text-gray-800 dark:text-white text-lg font-medium mb-2">
+                    <p className="text-gray-800  text-lg font-medium mb-2">
                       {event.name}
                     </p>
-                    <p className="capitalize text-gray-500 dark:text-gray-300 text-sm">
+                    <p className="capitalize text-gray-500  text-sm">
                       {event.description}
                     </p>
                     <div className="flex items-center mt-4">
@@ -122,7 +122,7 @@ const ClubPage = () => {
                       />
                     </div>
                     <div className="mt-2 text-center flex flex-col">
-                      <span className="text-gray-600 dark:text-white text-base font-medium">
+                      <span className="text-gray-600  text-base font-medium">
                         {item.name}
                       </span>
                       <span className="text-gray-400 text-xs">

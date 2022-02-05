@@ -72,15 +72,15 @@ const ViewActiveEvents = () => {
                     src="/images/events.svg"
                     className="max-h-40 w-full object-cover p-2"
                   />
-                  <div className=" dark:bg-gray-800 w-full p-4">
+                  <div className="  w-full p-4">
                     <p className="text-gray-800 text-lg font-medium">
                       {event.name}
                       {/* problem why how clubs */}
                     </p>
-                    <p className="text-gray-600 dark:text-white text-xs font-medium mb-2">
+                    <p className="text-gray-600  text-xs font-medium mb-2">
                       {event.club.name}
                     </p>
-                    <p className="capitalize text-gray-400 dark:text-gray-300 text-xs">
+                    <p className="capitalize text-gray-400  text-xs">
                       {event.description}
                     </p>
                     <div className="flex items-center mt-4">

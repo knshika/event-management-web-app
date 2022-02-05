@@ -5,8 +5,12 @@ import Footer from "./components/Footer"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import CreateClub from "./pages/CreateClub"
-import HomePage from "./pages/HomePage"
+import HomePage from "./components/marketing/HomePage"
 import Profile from "./pages/Profile"
+import FAQs from "./components/marketing/FAQs"
+import ErrorPage from "./pages/ErrorPage"
+import Contact from "./components/marketing/Contact"
+import Features from "./components/marketing/Features"
 import ViewActiveEvents from "./pages/ViewActiveEvents"
 import ViewClubs from "./pages/ViewClubs"
 import ProfileUpdate from "./pages/ProfileUpdate"
@@ -44,9 +48,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+
       <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="register" exact element={<Register />} />
+        <Route path="error" exact element={<ErrorPage />} />
+        <Route path="contact" exact element={<Contact />} />
+        <Route path="features" exact element={<Features />} />
+        <Route path="faqs" exact element={<FAQs />} />
         <Route path="login" exact element={<Login />} />
         <Route path="events" exact element={<ViewActiveEvents />} />
         <Route path="clubs" exact element={<ViewClubs />} />
@@ -65,6 +74,7 @@ const App = () => {
           element={<Participants />}
         />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   )
